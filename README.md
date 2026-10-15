@@ -27,13 +27,13 @@ divan
 
 Start with a council, a writer reviewed by critics, or a single assistant. In the visual editor, connect assistants to decide which outputs they can read. Reuse prompts and response forms from the **Library**. Each saved design is a model you can run again.
 
-![A writer sends a draft to critics, whose responses feed a rewriter](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/writer-critics.png?v=2)
+![A writer sends a draft to critics, whose responses feed a rewriter](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/writer-critics.png?v=3)
 
 *A workflow configured with Claude Opus 5.5, GPT-6-Astra, Grok 4.7, and GPT-6.1-Sol.*
 
 Add conditions to choose a branch from a structured result, and pick which fields travel along an edge.
 
-![A condition routes a review to one of two branches](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/conditional-flow.png?v=2)
+![A condition routes a review to one of two branches](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/conditional-flow.png?v=3)
 
 *A condition chooses which path runs.*
 
@@ -41,7 +41,7 @@ A council is one built-in flow: members answer independently without seeing one 
 
 Divan shows each round's progress and answer in a branching conversation tree. Comment on an answer, continue from it, or branch from an earlier round. A saved session keeps the flow and settings it started with, so later model edits do not silently change that conversation.
 
-![One question continues into two conversation branches, with an answer beside the tree](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/branching-council.png?v=2)
+![One question continues into two conversation branches, with an answer beside the tree](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/branching-council.png?v=3)
 
 *Illustrative conversation data showing two branches from one council answer.*
 
