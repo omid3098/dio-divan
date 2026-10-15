@@ -12,7 +12,7 @@
     "url": "https://github.com/omid3098/dio-divan/issues"
   },
   "type": "module",
-  "description": "Dio Divan: a council of AI coding agents answers one question blind; a chairman writes the answer.",
+  "description": "Build AI workflows from coding assistants and use each workflow as one model.",
   "packageManager": "pnpm@11.28.4",
   "engines": {
     "node": ">=24.21.0"

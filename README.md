@@ -1,67 +1,111 @@
 # Dio Divan
 
-Divan asks coding assistants the same question independently. A chairman reads their reports and writes one answer. You can follow up or branch a conversation in the local web editor, and design other flows in Models.
+**Build AI workflows from the coding assistants you already use, then use each workflow as one model.**
 
-Licensed under [MIT](LICENSE). For help or bugs, use [GitHub Issues](https://github.com/omid3098/dio-divan/issues). Tested with real assistants on Windows. macOS and Linux pass the automated install tests but have not yet been tested with real assistants.
+Divan connects Claude Code, Codex, Grok, Pi and, on Windows, Hermes in a visual editor. A workflow can ask assistants independently, have critics review a draft, branch on a structured answer, or use just one assistant. Save it as a **Divan model** and ask it in Divan's local web app, T3 Code, Pi or an OpenAI-compatible client.
 
-## Install and open
+Divan is for research, advice, planning and review. Divan models return text; client integrations do not execute the client's tools or apply code changes. Calls use **your own assistant subscriptions or API credits**.
 
-Install with `npm install -g dio-divan`; the command it installs is `divan`. You need Node **24.21 or newer** and at least one installed, signed-in assistant with a usable model: Claude Code, Codex, Grok, Pi or Hermes (Windows only). The Home setup card links their official instructions and shows copyable commands. It never installs or signs in for you.
+**Watch Divan in 58 seconds:**
 
-`npx divan` is a different, unrelated npm package. On Windows PowerShell, if execution policy blocks `divan.ps1`, use `divan.cmd` (or, if appropriate for your account, `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`).
+https://github.com/user-attachments/assets/daa3eb32-e78d-479b-a6fd-eed4e1a4080b
 
-Run `divan` to start the server in the background and open its sign-in address. Run it again to reopen the existing server. `divan stop` stops it; `divan serve` runs it in the foreground so you can see a startup error. Set `DIVAN_NO_OPEN=1` to print the sign-in address without opening a browser. A browser opener that is missing or fails is reported in one plain line, and the printed address is the one to open yourself.
+## Get started
 
-**macOS and Linux.** The Node in a distribution's packages (Ubuntu's `apt install nodejs npm`, for one) is often older than 24.21: install Node from [nodejs.org](https://nodejs.org/en/download) instead (on Linux its instructions use nvm). That Node needs no `sudo` for `npm install -g`. If `npm install -g` still fails with `EACCES`, give npm a folder of your own: run `npm config set prefix ~/.npm-global`, add `export PATH="$HOME/.npm-global/bin:$PATH"` to your shell profile (`~/.bashrc` or `~/.zshrc`), and open a new terminal.
+You need [Node.js 24.21 or newer](https://nodejs.org/en/download) and at least one installed, signed-in assistant with a usable model. Then:
 
-**WSL.** Install Node and the assistants inside Linux. By default Windows' own `npm` and programs are on WSL's PATH too; `command -v node npm` should print Linux paths, not `/mnt/c/…`.
+```sh
+npm install -g dio-divan
+divan
+```
 
-If Windows says `divan` is not recognized after installation, run `npm prefix -g` and add the folder it prints to your user PATH (often `%APPDATA%\npm`). Open a new terminal, then stop and restart Divan from it so it inherits that PATH. Restarting can interrupt work; Divan never changes PATH automatically.
+`divan` starts a local server, opens a fresh sign-in link and shows setup help for the assistants it finds. Choose a suggested model or make one in **Models**, type a question, and press **Ask**. Setup checks do not send your question. Run `divan` again to reopen the server; use `divan stop` to stop it. `divan serve` runs in the foreground when you need to see a startup error.
 
-In the observed Windows OpenSSH setup, ending the SSH session also ended its detached server. Use `divan serve` inside a kept SSH session there.
+`npx divan` belongs to an unrelated package. Install `dio-divan` as shown above.
 
-The default port is **47321**. `divan --port N` changes it for this run only. For a lasting change, use Connect's Port field, or set `"port": N` in `settings.json` in the Divan home (`~/.dio-divan`, or `DIVAN_HOME`).
+## Design a model
 
-These addresses are sign-in links, not bookmarks. After restarting, run `divan` again and paste the fresh address into **the same tab** to keep its question draft. The fragment is cleared after sign-in. Completed answers also have one-use links that expire after 30 minutes. The persistent client API key is never part of a sign-in address.
+Start with a council, a writer reviewed by critics, or a single assistant. In the visual editor, connect assistants to decide which outputs they can read. Reuse prompts and response forms from the **Library**. Each saved design is a model you can run again.
 
-## Your first question
+![A writer sends a draft to critics, whose responses feed a rewriter](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/writer-critics.png)
 
-With one usable model, use the Home action naming that assistant to create a single-assistant model. It keeps your question; sending it requires a separate press of **Ask**.
+*A writer, critics and rewriter in the model editor. Screenshots use example data in test mode.*
 
-With one company and at least two different discovered models, Default uses two models as members and a third different model as chairman when available. They may share blind spots and the chairman may favour answers like its own. An assistant from another company makes the council independent. Quick keeps its chairman separate and is blocked in this configuration.
+Add conditions to choose a branch from a structured result, and pick which fields travel along an edge.
 
-With two companies, Default can use two different models from one and a chairman from the other. One usable program such as Pi can supply those models; Home names that program and warns that its faults affect every participant. With three native assistants, Claude Code chairs while Codex and Grok answer. Larger already-separated rosters remain possible. Unknown router names do not prove different companies. When there is no feasible roster, Home offers one assistant. That action reuses an untouched matching single model; Models’ new-single action still creates another. Saved models, explicit level choices and existing sessions retain their settings.
+![A condition routes a review to one of two branches](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/conditional-flow.png)
 
-Each call uses **your own subscriptions or API credits**. Home shows the actual maximum calls for the chosen model; retries can add calls. Actual usage appears after a round. The time for a first real round is unknown until measured; later Home can show the measured range. No question is sent until you press Ask. Setup checks only inspect assistants.
+*A condition chooses which path runs.*
 
-Optional example: “For a small project I maintain alone, when would splitting it into services be worth the extra work? Give reasons for both choices.”
+A council is one built-in flow: members answer independently without seeing one another's reports, then a chairman weighs their reports and writes one answer. Different models or providers can bring different perspectives, but agreement is no guarantee of correctness.
 
-## What assistants can read
+Divan shows each round's progress and answer in a branching conversation tree. Comment on an answer, continue from it, or branch from an earlier round. A saved session keeps the flow and settings it started with, so later model edits do not silently change that conversation.
 
-The access controls select tools, memory and web. With tools on, assistants may read beyond the chosen working folder and relevant local T3 conversations when available. Memory is read only when enabled. Codex's shell can read anything your account can. What an assistant reads can go to its model provider. The local panel is not local model inference or a file-access sandbox. Tools and web start on, and memory too where a read-only connection exists; change them for each assistant in Models.
+![One question continues into two conversation branches, with an answer beside the tree](https://raw.githubusercontent.com/omid3098/dio-divan/main/docs/media/branching-council.png)
 
-agy is a manual exception, excluded from Default, Quick and the first-run Single suggestion. Its own settings control tools, memory and web: **agy can write files and run commands on this computer, and Divan cannot stop it.** Divan shows that warning when selected, on its card, before Ask and in the session’s frozen settings. It starts in an empty scratch folder and receives the project path in its prompt. agy must support stream-json input on stdin. Version 1.3.4 accepts that input and a JSON schema, but rejects JSON model listing: enter a model slug manually, such as `gemini-3.8-flash`. Display names are not supported.
+*An answer and two branches of the same conversation.*
 
-When Claude Code is signed in but its catalogue is missing, Divan uses Claude Code's documented standard names `opus`, `sonnet` and `haiku`. Check again replaces those aliases when a catalogue is available.
+## Use it from your editor or client
 
-After installing a CLI, stop Divan and start it from a new terminal so it receives the updated executable search path (PATH). Restarting can interrupt work. Home checks again only when asked; it does not poll or check on focus. If Divan still says an assistant is not installed, its folder is not on PATH: Claude Code's installer puts `claude` in `~/.local/bin` (`%USERPROFILE%\.local\bin` on Windows) and prints the line to add to your shell profile. Add it, open a new terminal, stop Divan and run `divan` again. Divan notices Claude Code in that folder and tells you so; it never runs a program from there.
+Open **Connect** in Divan for the commands, local address and client key for your installation. Its connection test checks the server and model list; it does not call an assistant.
 
-On Windows, Divan supports Hermes source revision `59004a62356f` (pinned in `src/server/adapters/hermes/supported.json`); other installations are shown as unsupported.
+| Client | Connection |
+| --- | --- |
+| **T3 Code** | Add Divan as a local ACP provider with the executable and arguments shown in Connect. ACP is the protocol T3 Code uses to talk to Divan. The first prompt starts Divan if needed. |
+| **Pi** | Run the `pi install` command shown in Connect. Divan models appear in Pi's model list; first use starts Divan if needed. |
+| **OpenAI-compatible clients** | Use Connect's local `/v1` base address and key. Models are named `divan/<id>`; `reasoning_effort` accepts `low`, `medium`, `high` or `max`. |
 
-## Connect another app
+These integrations return Divan's text answer. In T3 Code, Divan does not call the tools T3 Code makes available to agents.
 
-Connect shows the installed paths and client key. Its connection test checks that the server answers and lists models; it does not run an assistant.
+## Access, cost and limits
 
-- **T3 Code:** add an ACP provider with Local command, using the executable and arguments shown in Connect. ACP is the protocol through which T3 talks to Divan. Initialization does not start the server; the first prompt starts it lazily.
-- **Pi:** run the `pi install` command shown in Connect to register the packaged extension. It lists Divan models without starting the server and starts it on first use.
-- **OpenAI-compatible clients:** use Connect's local `/v1` base address and key. Model names are `divan/<id>`; `reasoning_effort` can be `low`, `medium`, `high` or `max`.
+Each assistant call uses your subscription or API credits. Divan shows the selected model's maximum calls per round before Ask; retries can add calls, and actual usage appears after the round. One assistant is enough to start. Councils with multiple models may share the same provider or underlying blind spots, and availability can change which members run.
 
-## Update or remove
+Tool, memory and web switches control what each assistant may read. With tools on, an assistant can read beyond the working folder; Codex's shell can read anything your account can. Read material may go to that assistant's model provider. Divan is a local organizer of existing assistants, not local model inference or a file-access sandbox. Tools and web start on, and memory starts on where a read-only connection exists; change access per assistant in Models.
 
-Disconnect clients and stop Divan before an update or uninstall. After updating with `npm install -g dio-divan`, start Divan again; the running process does not update itself. Remove the package with `npm uninstall -g dio-divan`, and remove its Pi/T3 registrations. Deleting the Divan home is a **separate optional action** that removes saved sessions and keys: normally `~/.dio-divan`, or the folder named by `DIVAN_HOME`.
+**agy is a manual exception.** It is excluded from automatic suggestions. Its own settings control access, and it can write files and run commands; Divan cannot stop it. Divan warns you when you select it. It starts in an empty scratch folder and receives your project path in its prompt.
 
-For Pi, run `pi remove "<the extension path Connect showed>"` (`pi list` shows registered sources). In T3 Code's provider settings, remove the Divan ACP provider. If you uninstalled while Divan was running, read `pid` in `<Divan home>/server.json` and stop that process: Windows `taskkill /PID N /T /F`; macOS/Linux `kill -TERM N`. Check that the PID still belongs to Divan before stopping it.
+Real assistants have been tested on Windows. macOS and Linux pass automated install tests but have not yet been tested with real assistants. Hermes is Windows-only, and Divan supports its pinned source revision `59004a62356f`.
+
+<details>
+<summary>Installation and first-run help</summary>
+
+On Windows PowerShell, if the execution policy blocks `divan.ps1`, run `divan.cmd` instead. If Windows cannot find `divan` after installation, check `npm prefix -g`, add that folder (often `%APPDATA%\npm`) to your user PATH, and open a new terminal. Stop and restart Divan from the new terminal so it can find installed assistants; restarting can interrupt work.
+
+On macOS and Linux, a distribution's Node package may be older than 24.21. Install a current version from [nodejs.org](https://nodejs.org/en/download). If a global npm install fails with `EACCES`, give npm a user-owned prefix: run `npm config set prefix ~/.npm-global`, add `export PATH="$HOME/.npm-global/bin:$PATH"` to `~/.bashrc` or `~/.zshrc`, then open a new terminal.
+
+In WSL, install Node and assistants inside Linux. `command -v node npm` should show Linux paths rather than `/mnt/c/…` paths.
+
+The Home setup card reports assistants that are missing, signed out or missing a model catalogue. It links official setup instructions and offers **Check again**; it never installs or signs in for you. Claude Code without a catalogue uses its documented `opus`, `sonnet` and `haiku` aliases until a later check discovers the actual models. If Claude Code is installed in `~/.local/bin` (`%USERPROFILE%\.local\bin` on Windows) but that folder is off PATH, Divan reports it without running it. Add the folder to PATH, open a new terminal, then restart Divan. Home only checks again when asked.
+
+With one usable assistant, Home can create a single-assistant model while keeping your draft. With more discovered models, it suggests a council when a viable roster exists; its notes explain shared providers and other limits. You can edit the model before asking. Nothing is sent until you press **Ask**.
+
+agy needs stream-JSON input on stdin. Version 1.3.4 accepts that input and a JSON schema but does not list models as JSON. Enter a model slug manually, such as `gemini-3.8-flash`; display names are not supported.
+
+</details>
+
+<details>
+<summary>Server, sign-in and network settings</summary>
+
+The default port is **47321**. `divan --port N` changes it for one run; for a lasting change, use Connect's Port field or set `"port": N` in `settings.json` in the Divan home (`~/.dio-divan` or `DIVAN_HOME`). Set `DIVAN_NO_OPEN=1` to print a sign-in link without opening a browser. If the browser opener is missing or fails, Divan prints the link for you to open.
+
+Sign-in addresses are temporary links, not bookmarks. After a restart, run `divan` for a fresh one and paste it into the same tab to keep an unsent draft. Completed answers have one-use links that expire after 30 minutes. The persistent client API key is never part of a sign-in address.
+
+In one observed Windows OpenSSH setup, ending the SSH session also ended the detached server. Use `divan serve` inside a kept SSH session there.
+
+</details>
+
+<details>
+<summary>Update or remove Divan</summary>
+
+Disconnect clients and run `divan stop` before updating or uninstalling. Update with `npm install -g dio-divan`, then start Divan again; a running process does not update itself. Uninstall with `npm uninstall -g dio-divan` and remove its Pi and T3 Code registrations. Deleting the Divan home is a separate, optional action that removes saved sessions and keys (`~/.dio-divan` by default, or `DIVAN_HOME`).
+
+For Pi, use `pi remove "<the extension path Connect showed>"`; `pi list` shows registered sources. In T3 Code's provider settings, remove the Divan ACP provider. If the package was uninstalled while Divan was running, read `pid` from `<Divan home>/server.json` and stop that process only after checking it still belongs to Divan: `taskkill /PID N /T /F` on Windows or `kill -TERM N` on macOS/Linux.
+
+</details>
 
 ## Develop from source
 
-Use Node 24.21+ and pnpm. Run `pnpm i`, `pnpm build`, then `pnpm start`. `pnpm check` runs typecheck, lint and tests; the tests need no assistant installed (they use inert stand-ins and fake assistants) and run on Windows, macOS and Linux. `DIVAN_FAKE=1` uses deterministic fake assistants. `pnpm e2e` and `pnpm e2e:flows` use their own homes and headless browser profiles, and need Chrome, Chromium or Edge: they look in the usual places and for `google-chrome` or `chromium` on PATH; set `DIVAN_CHROME` to the browser program otherwise. The release build emits JavaScript and prebuilt web assets; installing its tarball needs only production dependencies and runs no build on the user's machine.
+Use Node 24.21+ and pnpm. Run `pnpm i`, `pnpm build`, then `pnpm start`. Set `DIVAN_HOME` to a separate folder for manual development runs if you also use an installed Divan. `pnpm check` runs typecheck, lint and tests with fake assistants; no installed assistant is needed. `DIVAN_FAKE=1` runs the app with deterministic fake assistants. `pnpm e2e` and `pnpm e2e:flows` need Chrome, Chromium or Edge; set `DIVAN_CHROME` if the browser is not in a usual location or on PATH. Release builds include the server JavaScript and web assets, so installing the package runs no build on the user's computer.
+
+Licensed under [MIT](LICENSE). For help or bugs, use [GitHub Issues](https://github.com/omid3098/dio-divan/issues).
