@@ -1,0 +1,7 @@
+{"type":"tool_call","toolCallId":"read-1","title":"read_file","kind":"read","status":"pending","toolName":"read_file","rawInput":{"target_file":"/project/notes.md","limit":5},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"memory-1","title":"search","kind":"other","status":"pending","toolName":"search","server":"memory","rawInput":{"query":"project plan"},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"thread-1","title":"t3__t3_thread_read","kind":"other","status":"pending","toolName":"t3__t3_thread_read","rawInput":{"threadId":"thread-123"},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"web-1","title":"web_search","kind":"fetch","status":"pending","toolName":"web_search","rawInput":{"query":"https://example.test/source"},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"other-1","title":"inspect","kind":"other","status":"pending","toolName":"inspect","rawInput":{},"content":[],"locations":[]}
+{"type":"tool_call","toolCallId":"read-1","title":"read_file","kind":"read","status":"pending","toolName":"read_file","rawInput":{"target_file":"/project/notes.md","limit":5},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"read-1","status":null,"content":[],"rawOutput":null,"locations":[{"path":"/project/notes.md"}]}

@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dio.local/divan/member.schema.json",
+  "title": "Dio Divan member output",
+  "description": "What one member returns. maxItems and x-maxWords are limits the code enforces by cutting; claims.maxItems and the claim text limit are filled from the session budgets. The report is the full answer; the other fields summarise it. The recommendation is null when the question asks for no decision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report",
+    "stance",
+    "recommendation",
+    "options",
+    "claims",
+    "risks",
+    "unknowns",
+    "would_change_my_mind"
+  ],
+  "properties": {
+    "report": {
+      "type": "string",
+      "x-maxWords": 8000
+    },
+    "stance": {
+      "type": "string",
+      "x-maxWords": 25
+    },
+    "recommendation": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["choice", "why", "confidence"],
+          "properties": {
+            "choice": {
+              "type": "string",
+              "x-maxWords": 12
+            },
+            "why": {
+              "type": "string",
+              "x-maxWords": 40
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "options": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "for", "against"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "x-maxWords": 8
+          },
+          "for": {
+            "type": "string",
+            "x-maxWords": 25
+          },
+          "against": {
+            "type": "string",
+            "x-maxWords": 25
+          }
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["text", "confidence"],
+        "properties": {
+          "text": {
+            "type": "string",
+            "x-maxWords": 30
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "risks": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "x-maxWords": 25
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "x-maxWords": 20
+      }
+    },
+    "would_change_my_mind": {
+      "type": "string",
+      "x-maxWords": 40
+    },
+    "votes": {
+      "type": "array",
+      "maxItems": 8,
+      "description": "Only from round 2 on: one vote per claim id of the previous chairman answer.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim", "vote", "why"],
+        "properties": {
+          "claim": {
+            "type": "string"
+          },
+          "vote": {
+            "enum": ["agree", "disagree", "unsure"]
+          },
+          "why": {
+            "type": "string",
+            "x-maxWords": 20
+          }
+        }
+      }
+    },
+    "memory_facts": {
+      "type": "array",
+      "maxItems": 5,
+      "description": "Only when this member has memory access: facts about the asker that it found there, each with where it found it. Otherwise an empty list.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fact", "source"],
+        "properties": {
+          "fact": {
+            "type": "string",
+            "x-maxWords": 25
+          },
+          "source": {
+            "type": "string",
+            "x-maxWords": 12
+          }
+        }
+      }
+    }
+  }
+}

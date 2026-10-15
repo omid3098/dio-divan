@@ -1,0 +1,1 @@
+{"type":"result","exit_code":0,"text":"{\"ok\":true}","tokens":{"input":100,"output":20,"cache_read":40,"cache_write":10,"total":170},"fixture":"synthetic"}

@@ -1,0 +1,8 @@
+{"event":"init","init":{"model":"gemini-3.8-flash","cwd":"/scratch","permission_mode":"request-review","json_schema":{"type":"object","properties":{"ok":{"type":"boolean"}},"required":["ok"],"additionalProperties":false}}}
+{"event":"step_update","step_update":{"step_index":0,"state":"DONE","step_type":"user_input"}}
+{"event":"step_update","step_update":{"step_index":1,"state":"ACTIVE","step_type":"agent_response","text_delta":"{\"ok\":true}"}}
+{"event":"step_update","step_update":{"step_index":1,"state":"DONE","step_type":"agent_response","text_delta":"\n","duration_seconds":3.6495791,"usage":{"input_tokens":12045,"output_tokens":47,"thinking_tokens":42,"cache_read_tokens":0,"total_tokens":12092}}}
+{"event":"step_update","step_update":{"step_index":2,"state":"DONE","step_type":"user_input","duration_seconds":0}}
+{"event":"step_update","step_update":{"step_index":3,"state":"DONE","step_type":"agent_response","text_delta":"{\"ok\":true,\"toolAction\":\"Completing task\",\"toolSummary\":\"Task completed\"}\n","duration_seconds":2.5692738,"usage":{"input_tokens":12189,"output_tokens":80,"thinking_tokens":51,"cache_read_tokens":0,"total_tokens":12269}}}
+{"event":"step_update","step_update":{"step_index":4,"state":"DONE","step_type":"finish","duration_seconds":0.0276856}}
+{"event":"result","result":{"status":"SUCCESS","response":"{\"ok\":true}\n{\"ok\":true,\"toolAction\":\"Completing task\",\"toolSummary\":\"Task completed\"}\n","duration_seconds":6.3136914,"num_turns":2,"structured_output":{"ok":true},"json_schema":{"type":"object","properties":{"ok":{"type":"boolean"}},"required":["ok"],"additionalProperties":false},"usage":{"input_tokens":24234,"output_tokens":127,"thinking_tokens":93,"cache_read_tokens":0,"total_tokens":24361}}}

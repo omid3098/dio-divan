@@ -1,0 +1,6 @@
+{"type":"tool_execution_start","toolCallId":"read-1","toolName":"read","args":{"path":"/project/notes.md"}}
+{"type":"tool_execution_start","toolCallId":"memory-1","toolName":"mcp__memory__search","args":{"query":"project plan"}}
+{"type":"tool_execution_start","toolCallId":"thread-1","toolName":"mcp__t3__t3_thread_read","args":{"threadId":"thread-123"}}
+{"type":"tool_execution_start","toolCallId":"web-1","toolName":"web_search","args":{"query":"https://example.test/source"}}
+{"type":"tool_execution_start","toolCallId":"other-1","toolName":"inspect","args":{}}
+{"type":"tool_execution_end","toolCallId":"read-1","toolName":"read","result":{"content":[{"type":"text","text":"ignored result"}]},"isError":false}

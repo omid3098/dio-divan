@@ -1,0 +1,7 @@
+{"type":"item.started","item":{"id":"read-1","type":"command_execution","command":"cat /project/notes.md"}}
+{"type":"item.completed","item":{"id":"read-1","type":"command_execution","command":"cat /project/notes.md","aggregated_output":"ignored result"}}
+{"type":"item.started","item":{"id":"memory-1","type":"mcp_tool_call","server":"memory","tool":"search","arguments":{"query":"project plan"}}}
+{"type":"item.completed","item":{"id":"memory-1","type":"mcp_tool_call","server":"memory","tool":"search","arguments":{"query":"project plan"},"result":{"content":"ignored result"}}}
+{"type":"item.completed","item":{"id":"thread-1","type":"mcp_tool_call","server":"t3","tool":"t3_thread_read","arguments":{"threadId":"thread-123"}}}
+{"type":"item.completed","item":{"id":"web-1","type":"web_search","query":"https://example.test/source"}}
+{"type":"item.completed","item":{"id":"other-1","type":"mcp_tool_call","server":"unknown","tool":"inspect","arguments":{}}}

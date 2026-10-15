@@ -1,0 +1,5 @@
+{"type":"system","subtype":"init","fixture":"synthetic"}
+{"type":"tool_use","tool_call_id":"synthetic-file-1","name":"read_file","input":{"path":"C:/fixture/read.txt"},"fixture":"synthetic"}
+{"type":"tool_result","tool_call_id":"synthetic-file-1","name":"read_file","output":"Synthetic canary","fixture":"synthetic"}
+{"type":"text","text":"{\"ok\":true}","fixture":"synthetic"}
+{"type":"result","exit_code":0,"text":"{\"ok\":true}","tokens":{"input":100,"output":20,"cache_read":40,"cache_write":0,"total":160},"fixture":"synthetic"}

@@ -1,0 +1,3 @@
+# Only these packages may run install scripts (same rule as Dio Tools).
+allowBuilds:
+  esbuild: true

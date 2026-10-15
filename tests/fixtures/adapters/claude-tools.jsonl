@@ -1,0 +1,5 @@
+{"type":"stream_event","event":{"type":"content_block_start","index":0,"content_block":{"type":"tool_use","id":"read-1","name":"Read","input":{}}}}
+{"type":"stream_event","event":{"type":"content_block_delta","index":0,"delta":{"type":"input_json_delta","partial_json":"{\"file_path\":\"/project/notes.md\"}"}}}
+{"type":"stream_event","event":{"type":"content_block_stop","index":0}}
+{"type":"assistant","message":{"content":[{"type":"tool_use","id":"read-1","name":"Read","input":{"file_path":"/project/notes.md"}},{"type":"tool_use","id":"memory-1","name":"mcp__memory__search","input":{"query":"project plan"}},{"type":"tool_use","id":"thread-1","name":"mcp__t3__t3_thread_read","input":{"threadId":"thread-123"}},{"type":"tool_use","id":"web-1","name":"WebFetch","input":{"url":"https://example.test/source"}},{"type":"tool_use","id":"other-1","name":"inspect","input":{}}]}}
+{"type":"user","message":{"content":[{"type":"tool_result","tool_use_id":"read-1","content":"ignored result"}]}}

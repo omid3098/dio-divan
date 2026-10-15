@@ -1,0 +1,2 @@
+{"type":"tool_call","toolCallId":"call-69c852a7-ff91-4297-9509-7347311f46d3-0","title":"read_file","kind":"read","status":"pending","toolName":"read_file","rawInput":{"target_file":"E:\\w\\etsy\\README.md","limit":5},"content":[],"locations":[]}
+{"type":"tool_call_update","toolCallId":"call-69c852a7-ff91-4297-9509-7347311f46d3-0","status":null,"content":[],"rawOutput":null,"locations":[{"path":"E:\\w\\etsy\\README.md"}]}

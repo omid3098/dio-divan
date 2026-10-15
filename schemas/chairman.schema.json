@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dio.local/divan/chairman.schema.json",
+  "title": "Dio Divan chairman output",
+  "description": "What the chairman returns. Claim ids are assigned by the code (R<round>-C<n>); the claim text limit is filled from the session budgets.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "input_title",
+    "title",
+    "direction",
+    "answer",
+    "recommendation",
+    "questions_for_user",
+    "claims",
+    "seat_scores"
+  ],
+  "properties": {
+    "register": {
+      "enum": ["formal", "informal"]
+    },
+    "input_title": {
+      "type": "string",
+      "x-maxWords": 6
+    },
+    "title": {
+      "type": "string",
+      "x-maxWords": 6
+    },
+    "direction": {
+      "type": "string",
+      "x-maxWords": 16
+    },
+    "answer": {
+      "type": "string",
+      "x-maxWords": 3000
+    },
+    "recommendation": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["choice", "confidence"],
+          "properties": {
+            "choice": {
+              "type": "string",
+              "x-maxWords": 20
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "questions_for_user": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "x-maxWords": 25
+      }
+    },
+    "claims": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "text", "status", "from"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string",
+            "x-maxWords": 30
+          },
+          "status": {
+            "enum": ["accepted", "rejected", "open"]
+          },
+          "from": {
+            "type": "array",
+            "maxItems": 12,
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "seat_scores": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "score"],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
+          }
+        }
+      }
+    },
+    "dissent": {
+      "anyOf": [
+        {
+          "type": "string",
+          "x-maxWords": 40
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "agreement": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["agree", "of"],
+          "properties": {
+            "agree": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "of": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

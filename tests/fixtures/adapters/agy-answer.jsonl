@@ -1,0 +1,8 @@
+{"event":"init","init":{"model":"gemini-3.8-flash","cwd":"/scratch","permission_mode":"request-review","json_schema":{"type":"object","properties":{"ok":{"type":"boolean"}},"required":["ok"],"additionalProperties":false}}}
+{"event":"step_update","step_update":{"step_index":0,"state":"DONE","step_type":"user_input"}}
+{"event":"step_update","step_update":{"step_index":1,"state":"ACTIVE","step_type":"agent_response","text_delta":"{\"ok\":true}"}}
+{"event":"step_update","step_update":{"step_index":1,"state":"DONE","step_type":"agent_response","text_delta":"\n","duration_seconds":2.7991763,"usage":{"input_tokens":12027,"output_tokens":5,"thinking_tokens":0,"cache_read_tokens":0,"total_tokens":12032}}}
+{"event":"step_update","step_update":{"step_index":2,"state":"DONE","step_type":"user_input","duration_seconds":0}}
+{"event":"step_update","step_update":{"step_index":3,"state":"DONE","step_type":"agent_response","text_delta":"{\"ok\":true,\"toolAction\":\"Completing task\",\"toolSummary\":\"Finish task\"}\n","duration_seconds":1.6939215,"usage":{"input_tokens":12129,"output_tokens":29,"thinking_tokens":0,"cache_read_tokens":0,"total_tokens":12158}}}
+{"event":"step_update","step_update":{"step_index":4,"state":"DONE","step_type":"finish","duration_seconds":0.0290136}}
+{"event":"result","result":{"status":"SUCCESS","response":"{\"ok\":true}\n{\"ok\":true,\"toolAction\":\"Completing task\",\"toolSummary\":\"Finish task\"}\n","duration_seconds":4.5722079,"num_turns":2,"structured_output":{"ok":true},"json_schema":{"type":"object","properties":{"ok":{"type":"boolean"}},"required":["ok"],"additionalProperties":false},"usage":{"input_tokens":24156,"output_tokens":34,"thinking_tokens":0,"cache_read_tokens":0,"total_tokens":24190}}}

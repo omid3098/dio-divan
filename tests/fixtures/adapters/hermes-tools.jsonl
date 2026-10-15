@@ -1,0 +1,5 @@
+{"type":"tool_use","tool_call_id":"synthetic-a","name":"read_file","input":{"path":"C:/fixture/read.txt","secret":"synthetic-private-key"},"fixture":"synthetic"}
+{"type":"tool_use","tool_call_id":"synthetic-a","name":"read_file","input":{"path":"duplicate"},"fixture":"synthetic"}
+{"type":"tool_use","tool_call_id":"synthetic-b","name":"mcp_memory_search","input":{"query":"synthetic-private-query"},"fixture":"synthetic"}
+{"type":"tool_use","tool_call_id":"synthetic-c","name":"mcp_t3_t3_thread_read","input":{"threadId":"synthetic-thread"},"fixture":"synthetic"}
+{"type":"tool_use","tool_call_id":"synthetic-d","name":"mcp_hermes_history_hermes_history_read","input":{"sessionId":"synthetic-session"},"fixture":"synthetic"}

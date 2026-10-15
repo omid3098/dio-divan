@@ -1,0 +1,2 @@
+{"event":"init","init":{"model":"gemini-3.8-flash","cwd":"/scratch","permission_mode":"request-review","json_schema":{"type":"object","properties":{"ok":{"type":"boolean"}},"required":["ok"],"additionalProperties":false}}}
+{"event":"step_update","step_update":{"step_index":0,"state":"DONE","step_type":"user_input"}}

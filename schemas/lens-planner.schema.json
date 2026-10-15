@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dio.local/divan/lens-planner.schema.json",
+  "title": "Dio Divan lens planner output",
+  "description": "What the lens planner returns before the members start: investigative questions made for the asker's question. lenses.maxItems is filled at run time (members minus the anchor, or the members); x-maxWords are limits the code enforces by cutting.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lenses"],
+  "properties": {
+    "lenses": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["question", "why"],
+        "properties": {
+          "question": {
+            "type": "string",
+            "x-maxWords": 30
+          },
+          "why": {
+            "type": "string",
+            "x-maxWords": 25
+          }
+        }
+      }
+    }
+  }
+}

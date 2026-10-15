@@ -1,0 +1,55 @@
+name: Fake installed release
+# Pushes and pull requests run it on every branch (a manual run needs this file on the default branch).
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      DIVAN_FAKE: '1'
+      DIVAN_NO_OPEN: '1'
+      PI_OFFLINE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24.21.0'
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+        with:
+          version: '11.28.4'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm build
+      - name: Install pinned Pi in a private runner project
+        shell: pwsh
+        run: |
+          @'
+          import { spawnSync } from 'node:child_process';
+          import { appendFileSync } from 'node:fs';
+          import { join } from 'node:path';
+          import { npmEnvironment } from './e2e/npm-isolation.mjs';
+          import { resolveCommand } from './src/server/proc.ts';
+          const project = join(process.env.RUNNER_TEMP, 'divan-pi');
+          const env = npmEnvironment(process.env.RUNNER_TEMP, project);
+          const npm = resolveCommand('npm');
+          if (!npm) throw new Error('npm is missing');
+          const result = spawnSync(npm.command, [...npm.prefix, 'install', '--local', '--prefix', project, '--ignore-scripts', '--no-audit', '--no-fund', '@earendil-works/pi-coding-agent@1.2.0'], { cwd: project, env, stdio: 'inherit', windowsHide: true });
+          if (result.error) throw result.error;
+          if (result.status !== 0) process.exit(result.status ?? 1);
+          appendFileSync(process.env.GITHUB_PATH, join(project, 'node_modules', '.bin') + '\n');
+          '@ | node --input-type=module
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: node e2e/installed-package.mjs
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: installed-package-${{ matrix.os }}
+          path: .evidence/installed-package.json

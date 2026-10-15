@@ -1,0 +1,150 @@
+// متن‌های صفحهٔ شوراها به فارسی. با fa.ts یکی می‌شود.
+
+import type { councilsEn } from './councils-en.ts';
+import type { Msg } from './index.tsx';
+
+export const councilsFa: Record<keyof typeof councilsEn, Msg> = {
+  'councils.defaultPill': 'پیش‌فرض',
+  'councils.summary': '{members} · رئیس {chair}',
+  'councils.new': 'مدل تازه…',
+  'councils.newTitle': 'مدل تازهٔ دیوان',
+  'councils.modelName': 'نام مدل در Pi و T3 Code:',
+  'councils.purpose': 'دستیارها و رئیسی که وقتی با این مدل می‌پرسید پاسخ می‌دهند.',
+  'councils.moreAbout': 'دربارهٔ این مدل',
+  'councils.manage': 'مدیریت این مدل',
+  'councils.duplicate': 'تکثیر…',
+  'councils.editId': 'ویرایش شناسه…',
+  'councils.sharedNote':
+    'تغییرهای اینجا در همین مدل ذخیره می‌شود، برای هر چیزی که از آن استفاده می‌کند: Pi، T3 Code و Dio Divan.',
+  'councils.describeDefault': 'مدلی که این رایانه می‌تواند اجرا کند، با تغییرهای ذخیره‌شدهٔ شما.',
+  'councils.describeQuick':
+    'سریع‌ترین اعضا با استدلال کم، و رئیسی از خانواده‌ای که هیچ‌کدامشان در آن نیستند.',
+  'councils.describeCustom': 'مدل شما، بر پایهٔ «پیش‌فرض».',
+  'councils.describeCustomQuick': 'مدل شما، بر پایهٔ «سریع».',
+  'councils.autoMeaning':
+    'Dio Divan این را از دستیارهای نصب‌شده روی این رایانه می‌سازد؛ می‌توانید ویرایشش کنید.',
+  'councils.autoChanges': '{n} تغییر خودکار در تنظیمات',
+  'councils.members': 'اعضا',
+  'councils.baseHint': 'مدل پایه. هر سطح استدلال از آن شروع می‌کند، با استدلالی که آن سطح می‌خواهد.',
+  'councils.recheck': 'بررسی دوباره',
+  'councils.recheckHint': 'دوباره دستیارها و مدل‌های نصب‌شده را جست‌وجو کن',
+  'councils.unusableTitle': 'روی این رایانه در دسترس نیست:',
+  'councils.checking': 'در حال بررسی…',
+  'councils.addSeat': 'افزودن عضو',
+  'councils.accessHint': 'ابزار، حافظه و وب برای هر عضو خاموش است، مگر روشنشان کنید.',
+  'councils.chairman': 'رئیس',
+  'councils.chairmanHint':
+    'فایل‌ها و، اگر «حافظه» روشن باشد، حافظه را فقط می‌خواند، هرگز وب را، تا چیزهایی را که جوابش بر آن‌ها تکیه دارد وارسی کند. جواب‌های اعضا را بی‌نام می‌بیند.',
+  'councils.chairmanMemory': 'حافظه',
+  'councils.chairmanMemoryHint': 'فقط‌خواندنی؛ رئیس می‌تواند حافظهٔ شما را بخواند',
+  'councils.chairmanMemoryOnly': 'فقط Claude Code می‌تواند حافظه را فقط‌خواندنی نگه دارد',
+  'councils.family': 'رئیس هم‌خانوادهٔ یکی از اعضاست؛ مدلی از خانوادهٔ دیگر بهتر است.',
+  'councils.format': 'قالب و بودجه',
+  'councils.template': 'قالب',
+  'councils.templateName': 'تصمیم مهم',
+  'councils.maxClaims': 'ادعا برای هر عضو',
+  'councils.maxClaimsHint': 'هر عضو حداکثر چند ادعا بیاورد.',
+  'councils.maxWords': 'کلمه در هر ادعا',
+  'councils.maxWordsHint': 'ادعای بلندتر در انتهای یک کلمهٔ کامل بریده می‌شود.',
+  'councils.defaultLevel': 'سطح پیش‌فرض',
+  'councils.defaultLevelHint':
+    'سطحی که سشن تازهٔ این مدل با آن شروع می‌شود و همان که ابزارهای دیگر از divan/{id} می‌گیرند.',
+  'councils.danger': 'بخش خطر',
+  'councils.resetDefaults': 'بازگشت به تنظیمات پیش‌فرض دیوان…',
+  'councils.resetHint': 'همهٔ تغییرهای ذخیره‌شدهٔ این مدل را پاک می‌کند، در پایه و در همهٔ سطح‌ها.',
+
+  // ---------- levels ----------
+  'councils.levelIntro':
+    'سطح «{level}» از مدل پایه ارث می‌برد. فقط برای همین سطح می‌توانید مدل یا استدلال یک عضو را عوض کنید، عضوی را روشن یا خاموش کنید یا رئیس را تغییر دهید.',
+  'councils.levelSeatsHint': 'هر ردیف می‌گوید مقدارهایش از کجا آمده است.',
+  'councils.resetLevel': 'بازگرداندن سطح «{level}» به پیش‌فرض',
+  'councils.noOverrides': 'در این سطح چیزی بازنویسی نشده است.',
+  'councils.overrides': {
+    one: '{count} بازنویسی در این سطح.',
+    other: '{count} بازنویسی در این سطح.',
+  },
+  'councils.resetToLevel': 'برگشت به آنچه سطح می‌سازد',
+  'councils.origin.inherited': 'ارث‌رسیده',
+  'councils.origin.level': 'از سطح',
+  'councils.origin.override': 'بازنویسی‌شده',
+  'councils.baseFirst':
+    'مدل پایه تغییر ذخیره‌نشده دارد. اول ذخیره یا لغوشان کنید: سطح‌ها از آن ساخته می‌شوند.',
+  'councils.levelsFirst':
+    'یک سطح تغییر ذخیره‌نشده دارد. اول ذخیره یا لغوشان کنید، بعد مدل پایه را ویرایش کنید.',
+
+  // ---------- rows ----------
+  'councils.assistant': 'دستیار',
+  'councils.unavailable': 'در دسترس نیست',
+  'councils.model': 'مدل',
+  'councils.modelTyped': 'مدل (شناسه‌اش را بنویسید)',
+  'councils.modelPlaceholder': 'شناسهٔ مدل را بنویسید',
+  'councils.pickModel': 'مدل را انتخاب کنید…',
+  'councils.unlisted': 'فهرست‌نشده',
+  'councils.noCredit': 'بدون اعتبار',
+  'councils.effort': 'استدلال',
+  'councils.effortInName': 'در نام مدل',
+  'councils.effortNone': 'ندارد',
+  'councils.effortUnset': 'بدون تنظیم',
+  'councils.alwaysOn': 'همیشه روشن',
+  'councils.toggleOn': 'روشن',
+  'councils.toggleOff': 'خاموش',
+  'councils.closed': 'خاموش',
+  'councils.baseFirstTip': 'اول پایه را ذخیره یا رها کنید',
+  'councils.levelsFirstTip': 'اول تغییرهای سطح‌ها را ذخیره یا رها کنید',
+  'councils.seatOn': 'عضو {n} روشن باشد',
+  'councils.resetSeat': 'بازگشت این عضو به پیش‌فرض',
+  'councils.removeSeat': 'حذف این عضو',
+  'councils.unusable.agy': 'می‌تواند فایل بنویسد، پس نه عضو می‌شود و نه رئیس.',
+  'councils.unusable.other': 'روی این رایانه در دسترس نیست.',
+
+  // ---------- save bar and dialogs ----------
+  'councils.unsaved': 'تغییرهای ذخیره‌نشده',
+  'councils.saving': 'در حال ذخیره…',
+  'councils.saved':
+    'ذخیره شد. نشست‌های تازه از آن استفاده می‌کنند؛ نشست‌هایی که شروع شده‌اند با همان مدل خودشان ادامه می‌دهند.',
+  'councils.saveFailed': 'ذخیره نشد: {problem}',
+  'councils.conflict': 'این مدل جای دیگری تغییر کرده. تغییرهای شما همین‌جا مانده‌اند.',
+  'councils.reload': 'بارگذاری دوباره',
+  'councils.save': 'ذخیره در «{name}»',
+  'councils.discard': 'دور ریختن تغییرها',
+  'councils.leaveText':
+    '«{name}» تغییرهایی دارد که ذخیره نکرده‌اید. «دور ریختن تغییرها» همین تغییرها را از بین می‌برد و برنمی‌گردند.',
+  'councils.saveAnd': 'ذخیره و {goal}',
+  'councils.goal.home': 'رفتن به خانه',
+  'councils.goal.sessions': 'رفتن به همهٔ سشن‌ها',
+  'councils.goal.councils': 'رفتن به مدل‌ها',
+  'councils.goal.connect': 'رفتن به اتصال',
+  'councils.goal.settings': 'رفتن به تنظیمات',
+  'councils.goal.openCouncil': 'باز کردن «{name}»',
+  'councils.goal.openSession': 'باز کردن «{name}»',
+  'councils.goal.session': 'باز کردن سشن',
+  'councils.goal.duplicate': 'تکثیر',
+  'councils.goal.rename': 'تغییر نام',
+  'councils.goal.id': 'تغییر شناسه',
+  'councils.unsavedFirst': 'تغییر ذخیره‌نشده دارید؛ اول ذخیره یا لغوشان کنید.',
+  'councils.name': 'نام',
+  'councils.nameEmpty': 'نام مدل را بنویسید.',
+  'councils.idLabel': 'شناسه برای ابزارهای دیگر، با حروف لاتین',
+  'councils.idLabelShort': 'شناسه',
+  'councils.idHint':
+    'Pi و ابزارهای دیگر این مدل را با همین شناسه می‌شناسند، مثلاً divan/finance. فقط حرف کوچک لاتین، رقم و خط تیره (تا 32 نویسه).',
+  'councils.idBad': 'شناسه را با حروف لاتین بنویسید: حرف کوچک، رقم و خط تیره.',
+  'councils.idTitle': 'تغییر شناسه',
+  'councils.idChangeNote':
+    'با این تغییر مدل divan/{id} در Pi و ابزارهای دیگر پیدا نمی‌شود؛ نام تازه را به آن‌ها بدهید.',
+  'councils.renameTitle': 'تغییر نام مدل',
+  'councils.duplicateTitle': 'تکثیر مدل',
+  'councils.copyOf': 'کپی {name}',
+  'councils.resetTitle': 'بازگشت به تنظیمات پیش‌فرض دیوان؟',
+  'councils.resetText':
+    'همهٔ تغییرهایی که برای «{name}» ذخیره کرده‌اید پاک می‌شود، در پایه و در همهٔ سطح‌ها، و مدل به تنظیم‌های خودکار برمی‌گردد. این کار برگشت ندارد.',
+  'councils.resetUnsaved': 'تغییرهای ذخیره‌نشدهٔ روی این صفحه هم از بین می‌رود.',
+  'councils.resetConfirm': 'بازگشت به پیش‌فرض',
+  'councils.deleteTitle': 'این مدل پاک شود؟',
+  'councils.deleteText':
+    '«{name}» با همهٔ تنظیم‌هایش پاک می‌شود و مدل divan/{id} دیگر در Pi و ابزارهای دیگر نیست. سشن‌هایی که با آن شروع شده‌اند می‌مانند. این کار برگشت ندارد.',
+  'councils.deleteFailed': 'مدل پاک نشد.',
+  'councils.reloadTitle': 'بارگذاری دوباره؟',
+  'councils.reloadText':
+    'تغییرهای این صفحه دور ریخته می‌شوند و «{name}» با آنچه جای دیگری ذخیره شده جایگزین می‌شود. این کار برگشت ندارد.',
+};

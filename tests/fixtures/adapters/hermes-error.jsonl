@@ -1,0 +1,2 @@
+{"type":"error","error":"401 Authorization Bearer synthetic-private-key","fixture":"synthetic"}
+{"type":"result","exit_code":1,"text":"unsafe earlier text","error":"synthetic-private-key","tokens":{"input":5,"output":2,"cache_read":1,"cache_write":0,"total":8},"fixture":"synthetic"}

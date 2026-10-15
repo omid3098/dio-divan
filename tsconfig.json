@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./web/src/*"]
+    }
+  },
+  "include": ["src", "tests", "pi-extension", "vitest.config.ts"],
+  "exclude": ["tests/chair-stop.test.ts", "tests/session-settings.test.ts"]
+}

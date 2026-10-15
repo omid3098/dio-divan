@@ -1,0 +1,5 @@
+{"event":"step_update","step_update":{"step_index":1,"state":"ACTIVE","step_type":"tool","tool_name":"view_file","tool_info":{"parameters":{"TargetFile":"/project/notes.md"}}}}
+{"event":"step_update","step_update":{"step_index":1,"state":"DONE","step_type":"tool","tool_name":"view_file","tool_info":{"parameters":{"TargetFile":"/project/notes.md"},"output":"secret output"}}}
+{"event":"step_update","step_update":{"step_index":2,"state":"ACTIVE","step_type":"tool","tool_name":"run_command","tool_info":{"parameters":{"CommandLine":"echo secret"}}}}
+{"event":"step_update","step_update":{"step_index":3,"state":"DONE","step_type":"tool","tool_name":"read_url_content","tool_info":{"parameters":{"Url":"https://user:secret@example.test/page?token=secret#secret"}}}}
+{"event":"step_update","step_update":{"step_index":4,"state":"DONE","step_type":"tool","tool_name":"write_to_file","tool_info":{"parameters":{"TargetFile":"/scratch/file","CodeContent":"secret"}}}}

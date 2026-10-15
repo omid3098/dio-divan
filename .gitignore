@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.evidence/
+*.log
+.vite/
+e2e-failure.png

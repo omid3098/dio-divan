@@ -1,0 +1,15 @@
+{
+  "name": "dio-divan-pi",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Pi extension: /divan starts Dio Divan (if it is not running) and shows its URL.",
+  "keywords": [
+    "pi-package"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
